@@ -1,10 +1,10 @@
-```#include <iostream>
+#include <iostream>
 #include <limits>  //for ignore shit
 #include <cstdint> //if i want ex: int_16t (-32768 to 32767)
 #include <conio.h> //getch
 #include <stdio.h> //
 
-void IgnoreNewLine()
+void ignoreNewline()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
@@ -22,12 +22,12 @@ double getDouble() // we do the same for operator in case user is dumb
         if (std::cin.fail()) 
         {
             std::cin.clear();
-            IgnoreNewLine();
+            ignoreNewline();
             std::cerr << "Input invalid, Idiot!\n";
         }
         else
         {
-            IgnoreNewLine();
+            ignoreNewline();
             return x;
         }
     }
@@ -40,16 +40,16 @@ char getOperator() //ask for operator input without hte userfucking uop because 
     while (true)
     {
         std::cout << "Enter one of the following: +, -, *, or /: ";
-        char OPERATOR{};
-        std::cin >> OPERATOR;
+        char operation{};
+        std::cin >> operation;
 
-        switch (OPERATOR)
+        switch (operation)
         {
         case '+':
         case '-':
         case '*':
         case '/':
-            return OPERATOR;
+            return operation;
         default:
             std::cerr << "Input invalid, Idiot!\n";
 
@@ -59,21 +59,26 @@ char getOperator() //ask for operator input without hte userfucking uop because 
 
 
 
-void doMathBitch(double x, char OPERATOR, double y) //we do some magic
+void doMathBitch(double x, char operation, double y) //we do some magic
 {
-    switch (OPERATOR)
+    double resAdd = x + y;
+    double resSub = x - y;
+    double resMul = x * y;
+    double resDiv = x / y;
+    switch (operation)
     {
     case '+':
-        std::cout << x << " + " << y << " is " << x + y << '\n';
+        printf("%f + %f = %f\n", x, y, resAdd);
+        //std::cout << x << " + " << y << " is " << x + y << '\n';
         break;
     case '-':
-        std::cout << x << " - " << y << " is " << x - y << '\n';
+        printf("%f - %f = %f\n", x, y, resSub);
         break;
     case '*':
-        std::cout << x << " * " << y << " is " << x * y << '\n';
+        printf("%f * %f = %f\n", x, y, resMul);
         break;
     case '/':
-        std::cout << x << " / " << y << " is " << x / y << '\n';
+        printf("%f / %f = %f\n", x, y, resDiv);
         break;
     default:
         std::cerr << "doMathBitch() failed for some obscure reason you autist.\n";
@@ -93,4 +98,4 @@ int main()
    // printf("Received Input: %c\n", ch); 
     system("pause");
     return 0;
-}```
+}

@@ -1,0 +1,96 @@
+```#include <iostream>
+#include <limits>  //for ignore shit
+#include <cstdint> //if i want ex: int_16t (-32768 to 32767)
+#include <conio.h> //getch
+#include <stdio.h> //
+
+void IgnoreNewLine()
+{
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+}
+
+
+
+double getDouble() // we do the same for operator in case user is dumb
+{
+    while (true) 
+    {
+        std::cout << "Enter a double value: ";
+        double x{};
+        std::cin >> x;
+
+        if (std::cin.fail()) 
+        {
+            std::cin.clear();
+            IgnoreNewLine();
+            std::cerr << "Input invalid, Idiot!\n";
+        }
+        else
+        {
+            IgnoreNewLine();
+            return x;
+        }
+    }
+}
+
+
+
+char getOperator() //ask for operator input without hte userfucking uop because hes unreasonably stupid
+{
+    while (true)
+    {
+        std::cout << "Enter one of the following: +, -, *, or /: ";
+        char OPERATOR{};
+        std::cin >> OPERATOR;
+
+        switch (OPERATOR)
+        {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+            return OPERATOR;
+        default:
+            std::cerr << "Input invalid, Idiot!\n";
+
+        }
+    }
+}
+
+
+
+void doMathBitch(double x, char OPERATOR, double y) //we do some magic
+{
+    switch (OPERATOR)
+    {
+    case '+':
+        std::cout << x << " + " << y << " is " << x + y << '\n';
+        break;
+    case '-':
+        std::cout << x << " - " << y << " is " << x - y << '\n';
+        break;
+    case '*':
+        std::cout << x << " * " << y << " is " << x * y << '\n';
+        break;
+    case '/':
+        std::cout << x << " / " << y << " is " << x / y << '\n';
+        break;
+    default:
+        std::cerr << "doMathBitch() failed for some obscure reason you autist.\n";
+    }
+}
+
+
+
+int main()
+{
+    std::cout << "Welcome to doMathBitch\n \n";
+    double x{ getDouble() };
+    char OPERATOR{ getOperator() };
+    double y{ getDouble() };
+    doMathBitch(x, OPERATOR, y);
+   // char ch = _getch(); outdated rather do systempause monkey 
+   // printf("Received Input: %c\n", ch); 
+    system("pause");
+    return 0;
+}```

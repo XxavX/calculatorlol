@@ -82,9 +82,9 @@ int main()
 {
     printf("Welcome to doMathBitch\n \n");
     double x{ getDouble() };
-    char OPERATOR{ getOperator() };
+    char operation{ getOperator() };
     double y{ getDouble() };
-    doMathBitch(x, OPERATOR, y);
+    doMathBitch(x, operation, y);
     system("pause");
     return 0;
 }

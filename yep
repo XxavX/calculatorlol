@@ -1,21 +1,18 @@
 #include <iostream>
-#include <limits>  //for ignore shit
+#include <limits>  //for cin.ignore
 #include <cstdint> //if i want ex: int_16t (-32768 to 32767)
-#include <conio.h> //getch
-#include <stdio.h> //
+#include <stdio.h> //printf
 
 void ignoreNewline()
 {
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 
-
-
-double getDouble() // we do the same for operator in case user is dumb
+double getDouble()
 {
     while (true) 
     {
-        std::cout << "Enter a double value: ";
+        printf("Enter a double(number): ");
         double x{};
         std::cin >> x;
 
@@ -33,9 +30,7 @@ double getDouble() // we do the same for operator in case user is dumb
     }
 }
 
-
-
-char getOperator() //ask for operator input without hte userfucking uop because hes unreasonably stupid
+char getOperator()
 {
     while (true)
     {
@@ -57,9 +52,7 @@ char getOperator() //ask for operator input without hte userfucking uop because 
     }
 }
 
-
-
-void doMathBitch(double x, char operation, double y) //we do some magic
+void doMathBitch(double x, char operation, double y) 
 {
     double resAdd = x + y;
     double resSub = x - y;
@@ -81,21 +74,17 @@ void doMathBitch(double x, char operation, double y) //we do some magic
         printf("%f / %f = %f\n", x, y, resDiv);
         break;
     default:
-        std::cerr << "doMathBitch() failed for some obscure reason you autist.\n";
+        std::cerr << "doMathBitch() failed for some obscure.\n";
     }
 }
 
-
-
 int main()
 {
-    std::cout << "Welcome to doMathBitch\n \n";
+    printf("Welcome to doMathBitch\n \n");
     double x{ getDouble() };
     char OPERATOR{ getOperator() };
     double y{ getDouble() };
     doMathBitch(x, OPERATOR, y);
-   // char ch = _getch(); outdated rather do systempause monkey 
-   // printf("Received Input: %c\n", ch); 
     system("pause");
     return 0;
 }

@@ -10,13 +10,13 @@ void ignoreNewline()
 
 double getDouble()
 {
-    while (true) 
+    while (true)
     {
         printf("Enter a double(number): ");
         double x{};
         std::cin >> x;
 
-        if (std::cin.fail()) 
+        if (std::cin.fail())
         {
             std::cin.clear();
             ignoreNewline();
@@ -52,29 +52,24 @@ char getOperator()
     }
 }
 
-void doMathBitch(double x, char operation, double y) 
+void doMathBitch(double x, char operation, double y)
 {
-    double resAdd = x + y;
-    double resSub = x - y;
-    double resMul = x * y;
-    double resDiv = x / y;
     switch (operation)
     {
     case '+':
-        printf("%f + %f = %f\n", x, y, resAdd);
-        //std::cout << x << " + " << y << " is " << x + y << '\n';
+        printf("%f + %f = %f\n", x, y, x+y);
         break;
     case '-':
-        printf("%f - %f = %f\n", x, y, resSub);
+        printf("%f - %f = %f\n", x, y, x-y);
         break;
     case '*':
-        printf("%f * %f = %f\n", x, y, resMul);
+        printf("%f * %f = %f\n", x, y, x*y);
         break;
     case '/':
-        printf("%f / %f = %f\n", x, y, resDiv);
+        printf("%f / %f = %f\n", x, y, x/y);
         break;
     default:
-        std::cerr << "doMathBitch() failed for some obscure.\n";
+        std::cerr << "doMathBitch() failed for some obscure reason.\n";
     }
 }
 
